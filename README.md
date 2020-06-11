@@ -1,8 +1,7 @@
-# Learning SettingWithCopyWarning working with Pandas 
+# Working with Pandas 
 
-## And all the prereqs
-
-work based on this tutorial: https://realpython.com/pandas-settingwithcopywarning/
+- https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html
+- https://realpython.com/pandas-settingwithcopywarning/
 
 ## Install Instructions
 
