@@ -11,8 +11,10 @@ df = pd.DataFrame(np.random.randn(6, 4), index=dates, columns=list('ABCD'))
 print('\ndf')
 print(df)
 
-# convert DataFrame to numpy
-df_np = df.to_numpy()
+# select a single column
+print('\n')
+print(df['A'])
 
-print('\nnumpy dataframe')
-print(df_np)
+# select a slice of rows
+print('\n')
+print(df[0:3])
