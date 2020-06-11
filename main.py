@@ -11,11 +11,8 @@ df = pd.DataFrame(np.random.randn(6, 4), index=dates, columns=list('ABCD'))
 print('\ndf')
 print(df)
 
-top5 = df.head()
-bottom3 = df.tail(3)
+# convert DataFrame to numpy
+df_np = df.to_numpy()
 
-print('\ntop 5')
-print(top5)
-
-print('\nbottom 3')
-print(bottom3)
+print('\nnumpy dataframe')
+print(df_np)
