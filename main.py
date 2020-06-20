@@ -11,14 +11,14 @@ df = pd.DataFrame(np.random.randn(6, 4), index=dates, columns=list('ABCD'))
 print('\ndf')
 print(df)
 
-# select by label
-print('\nOne Index')
-print(df.loc[dates[0]])
+# boolean indexing
+# use filtered column indexes to filter dataset
+print(df[df['A'] > 0])
 
-# select by label
-print('\nAll Indexes with two columns')
-print(df.loc[:, ['A', 'C']])
+# select values were condition is true
+print(df[df > 0])
 
-# select by label
-print('\nScalar at location')
-print(df.at[dates[0], 'C'])
+# return rows where condition label is in row
+df2 = df.copy()
+df2['E'] = ['one', 'one', 'two', 'three', 'four', 'three']
+print(df2[df2['E'].isin(['two', 'four'])])
