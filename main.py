@@ -11,10 +11,14 @@ df = pd.DataFrame(np.random.randn(6, 4), index=dates, columns=list('ABCD'))
 print('\ndf')
 print(df)
 
-# reindex dataframe
-df1 = df.reindex(index=dates[0:4].append(pd.date_range(
-    '20130107', periods=2)), columns=list(df.columns) + ['E'])
-print(df1)
+# calculate mean of each column
+print(df.mean())
 
-# fill in missing values
-print(df1.fillna(value=1))
+# calculate mean of each row
+print(df.mean(1))
+
+# calculate subtraction by row
+print(df - [0.5, 0.25, 0.12, 0.06])
+
+# use function along a column
+print(df.apply(lambda x: x.max() - x.min()))
