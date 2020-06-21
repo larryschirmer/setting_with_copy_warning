@@ -1,24 +1,14 @@
 import numpy as np
 import pandas as pd
 
-# create a DatetimeIndex
-dates = pd.date_range('20130101', periods=6)
-print('\ndates')
-print(dates)
+tuples = list(zip(*[['bar', 'bar', 'baz', 'baz', 'foo', 'foo', 'qux', 'qux'],
+                    ['one', 'two', 'one', 'two', 'one', 'two', 'one', 'two']]))
 
-# create a Dataframe
-df = pd.DataFrame(np.random.randn(6, 4), index=dates, columns=list('ABCD'))
-print('\ndf')
-print(df)
+index = pd.MultiIndex.from_tuples(tuples, names=['first', 'second'])
+df = pd.DataFrame(np.random.randn(8, 2), index=index, columns=['A', 'B'])
+print(df[:4])
+print(df.loc[('bar', 'two'), 'B'])
 
-# calculate mean of each column
-print(df.mean())
-
-# calculate mean of each row
-print(df.mean(1))
-
-# calculate subtraction by row
-print(df - [0.5, 0.25, 0.12, 0.06])
-
-# use function along a column
-print(df.apply(lambda x: x.max() - x.min()))
+stacked = df.stack()
+print(stacked[:4])
+print(stacked.loc[('bar', 'two', 'B')])
