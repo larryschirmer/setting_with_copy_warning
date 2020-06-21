@@ -11,14 +11,23 @@ df = pd.DataFrame(np.random.randn(6, 4), index=dates, columns=list('ABCD'))
 print('\ndf')
 print(df)
 
-# boolean indexing
-# use filtered column indexes to filter dataset
-print(df[df['A'] > 0])
+# assign misaligned indexes to dataframe
+column1 = [1, 2, 3, 4, 5, 6]
+indexes = pd.date_range('20130102', periods=6)
+s1 = pd.Series(column1, indexes)
 
-# select values were condition is true
-print(df[df > 0])
+df['E'] = s1
 
-# return rows where condition label is in row
-df2 = df.copy()
-df2['E'] = ['one', 'one', 'two', 'three', 'four', 'three']
-print(df2[df2['E'].isin(['two', 'four'])])
+print(df)
+
+# assign value at labels
+df.at[dates[0], 'A'] = 0
+print(df)
+
+# reassign column D to 5
+df.loc[:, 'D'] = np.array([5] * len(df))
+print(df)
+
+# inverse values where a value greater than 0
+df[df > 0] = -df
+print(df)
